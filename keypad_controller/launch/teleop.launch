@@ -1,0 +1,23 @@
+<!-- -*- mode: XML -*- -->
+<launch>
+  <group ns="vesc">
+    <!-- keypad node -->
+    <node pkg="keypad_controller" name="keypad_controller" type="main" output="screen">
+    	<param name="keyboard_path" type="string" value="/dev/input/event5"/>
+    </node>
+
+    <!-- Spawn MUXs -->
+    <include file="$(find racecar)/launch/includes/mux.launch" />
+
+    <!-- start electronic speed controller driver -->
+    <include file="$(find racecar)/launch/includes/vesc.launch" />
+  </group>
+
+  <!-- start imu and laser scanner -->
+  <include file="$(find racecar)/launch/includes/sensors.launch" />
+  <include file="$(find racecar)/launch/includes/dual_ekf.launch" />
+
+  <!-- static transforms, e.g. base_link to imu -->
+  <include file="$(find racecar)/launch/includes/static_transforms.launch" />
+
+</launch>
