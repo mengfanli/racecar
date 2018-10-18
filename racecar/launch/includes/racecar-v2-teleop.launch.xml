@@ -6,7 +6,7 @@
   <group ns="vesc">
     <!-- keypad node -->
     <node pkg="keypad_controller" name="keypad_controller" type="main" output="screen">
-    	<param name="keyboard_path" type="string" value="/dev/input/event4"/>
+    	<param name="keyboard_path" type="string" value="/dev/input/event5"/>
     </node>
 
     <!-- Spawn MUXs -->
